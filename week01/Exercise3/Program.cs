@@ -14,6 +14,6 @@ class Program
             sum += i;
         }
 
-        Console.WriteLine($"The sum of numbers from 1 to {number} is {sum}");
+        Console.WriteLine($"The sum is: {sum}");
     }
 }

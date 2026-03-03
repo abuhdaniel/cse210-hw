@@ -4,19 +4,40 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Enter your first number: ");
-        int num1 = int.Parse(Console.ReadLine());
+        DisplayWelcome();
 
-        Console.Write("Enter your second number: ");
-        int num2 = int.Parse(Console.ReadLine());
+        string name = PromptUserName();
+        int number = PromptUserNumber();
 
-        int result = AddNumbers(num1, num2);
+        int squared = SquareNumber(number);
 
-        Console.WriteLine($"The sum of the two numbers is {result}");
+        DisplayResult(name, squared);
     }
 
-    static int AddNumbers(int number1, int number2)
+    static void DisplayWelcome()
     {
-        return number1 + number2;
+        Console.WriteLine("Welcome to the Program!");
+    }
+
+    static string PromptUserName()
+    {
+        Console.Write("Please enter your name: ");
+        return Console.ReadLine();
+    }
+
+    static int PromptUserNumber()
+    {
+        Console.Write("Please enter your favorite number: ");
+        return int.Parse(Console.ReadLine());
+    }
+
+    static int SquareNumber(int number)
+    {
+        return number * number;
+    }
+
+    static void DisplayResult(string name, int squared)
+    {
+        Console.WriteLine($"{name}, the square of your number is {squared}");
     }
 }

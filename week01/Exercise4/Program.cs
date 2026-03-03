@@ -5,28 +5,37 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<string> names = new List<string>();
+        List<int> numbers = new List<int>();
 
-        string userInput = "";
+        Console.WriteLine("Enter numbers (0 to quit):");
 
-        Console.WriteLine("Enter names (type 'done' when finished):");
+        int input = -1;
 
-        while (userInput.ToLower() != "done")
+        while (input != 0)
         {
-            Console.Write("Enter a name: ");
-            userInput = Console.ReadLine();
+            Console.Write("Enter number: ");
+            input = int.Parse(Console.ReadLine());
 
-            if (userInput.ToLower() != "done")
+            if (input != 0)
             {
-                names.Add(userInput);
+                numbers.Add(input);
             }
         }
 
-        Console.WriteLine("\nHere are the names you entered:");
+        int sum = 0;
+        int largest = numbers[0];
 
-        foreach (string name in names)
+        foreach (int number in numbers)
         {
-            Console.WriteLine(name);
+            sum += number;
+            if (number > largest)
+                largest = number;
         }
+
+        double average = (double)sum / numbers.Count;
+
+        Console.WriteLine($"The sum is: {sum}");
+        Console.WriteLine($"The average is: {average}");
+        Console.WriteLine($"The largest number is: {largest}");
     }
 }
