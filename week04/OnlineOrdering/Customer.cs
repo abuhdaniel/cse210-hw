@@ -11,9 +11,9 @@ public class Customer
         _address = address;
     }
 
-    public bool LivesInNIGERIA()
+    public bool LivesInUSA()
     {
-        return _address.IsNIGERIA();
+        return _address.IsUSA();
     }
 
     public string GetShippingInfo()

@@ -26,7 +26,7 @@ public class Order
         }
 
         // Shipping cost
-        if (_customer.LivesInNIGERIA())
+        if (_customer.LivesInUSA())
         {
             total += 5;
         }

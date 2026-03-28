@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Order 1 (NIGERIA)
-        Address address1 = new Address("10 Achinna street", "Oyigbo", "Rivers", "Nigeria");
-        Customer customer1 = new Customer("Abuh Daniel", address1);
+        // Order 1 (USA)
+        Address address1 = new Address("123 Main St", "New York", "NY", "USA");
+        Customer customer1 = new Customer("John Doe", address1);
 
         Order order1 = new Order(customer1);
         order1.AddProduct(new Product("Laptop", "P001", 800, 1));

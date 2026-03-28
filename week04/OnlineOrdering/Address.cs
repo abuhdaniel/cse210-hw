@@ -15,9 +15,9 @@ public class Address
         _country = country;
     }
 
-    public bool IsNIGERIA()
+    public bool IsUSA()
     {
-        return _country.ToLower() == "nigeria";
+        return _country.ToLower() == "usa";
     }
 
     public string GetFullAddress()
