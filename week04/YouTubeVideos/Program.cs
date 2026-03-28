@@ -8,16 +8,16 @@ class Program
         List<Video> videos = new List<Video>();
 
         // Video 1
-        Video video1 = new Video("C# Basics", "John Doe", 300);
-        video1.AddComment(new Comment("Alice", "Great video!"));
-        video1.AddComment(new Comment("Bob", "Very helpful."));
-        video1.AddComment(new Comment("Chris", "Nice explanation."));
+        Video video1 = new Video("C# Basics", "Abuh Daniel", 300);
+        video1.AddComment(new Comment("Ozioma", "Great video!"));
+        video1.AddComment(new Comment("Ivanna", "Very helpful."));
+        video1.AddComment(new Comment("Brianna", "Nice explanation."));
         videos.Add(video1);
 
         // Video 2
         Video video2 = new Video("OOP in C#", "Jane Smith", 450);
         video2.AddComment(new Comment("David", "Clear and simple."));
-        video2.AddComment(new Comment("Emma", "Loved it!"));
+        video2.AddComment(new Comment("Milana", "Loved it!"));
         video2.AddComment(new Comment("Frank", "Good examples."));
         videos.Add(video2);
 
