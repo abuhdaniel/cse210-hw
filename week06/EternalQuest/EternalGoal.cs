@@ -5,7 +5,7 @@ public class EternalGoal : Goal
 
     public override int RecordEvent()
     {
-        return GetPoints(); // never completes
+        return GetPoints();
     }
 
     public override string GetStatus()
@@ -15,6 +15,6 @@ public class EternalGoal : Goal
 
     public override string GetSaveString()
     {
-        return $"Eternal|{GetName()}";
+        return $"Eternal|{GetName()}|{GetDescription()}|{GetPoints()}";
     }
 }

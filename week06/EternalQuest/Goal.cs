@@ -14,7 +14,9 @@ public abstract class Goal
     }
 
     public string GetName() => _name;
+    public string GetDescription() => _description;
     public int GetPoints() => _points;
+    public bool IsComplete() => _isComplete;
 
     public abstract int RecordEvent();
     public abstract string GetStatus();

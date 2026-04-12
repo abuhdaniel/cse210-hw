@@ -20,6 +20,6 @@ public class SimpleGoal : Goal
 
     public override string GetSaveString()
     {
-        return $"Simple|{GetName()}|{_isComplete}";
+        return $"Simple|{GetName()}|{GetDescription()}|{GetPoints()}|{_isComplete}";
     }
 }

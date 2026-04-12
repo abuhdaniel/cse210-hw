@@ -6,6 +6,7 @@ public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
     private int _score = 0;
+    private int _level = 1;
 
     public void AddGoal(Goal goal)
     {
@@ -14,6 +15,7 @@ public class GoalManager
 
     public void DisplayGoals()
     {
+        Console.WriteLine("\nYour Goals:");
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetStatus()} {_goals[i].GetName()}");
@@ -24,12 +26,26 @@ public class GoalManager
     {
         int points = _goals[index].RecordEvent();
         _score += points;
+
         Console.WriteLine($"You earned {points} points!");
+        CheckLevelUp();
+    }
+
+    private void CheckLevelUp()
+    {
+        int newLevel = (_score / 1000) + 1;
+
+        if (newLevel > _level)
+        {
+            _level = newLevel;
+            Console.WriteLine($"🔥 LEVEL UP! You are now Level {_level}!");
+        }
     }
 
     public void DisplayScore()
     {
-        Console.WriteLine($"Total Score: {_score}");
+        Console.WriteLine($"\nTotal Score: {_score}");
+        Console.WriteLine($"Level: {_level}");
     }
 
     public void Save(string file)
@@ -47,6 +63,7 @@ public class GoalManager
     public void Load(string file)
     {
         string[] lines = File.ReadAllLines(file);
+
         _score = int.Parse(lines[0]);
         _goals.Clear();
 
@@ -55,12 +72,37 @@ public class GoalManager
             string[] parts = lines[i].Split('|');
 
             if (parts[0] == "Simple")
-                _goals.Add(new SimpleGoal(parts[1], "", 100));
+            {
+                SimpleGoal g = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
+                if (bool.Parse(parts[4]))
+                {
+                    g.RecordEvent();
+                }
+                _goals.Add(g);
+            }
             else if (parts[0] == "Eternal")
-                _goals.Add(new EternalGoal(parts[1], "", 100));
+            {
+                _goals.Add(new EternalGoal(parts[1], parts[2], int.Parse(parts[3])));
+            }
             else if (parts[0] == "Checklist")
-                _goals.Add(new ChecklistGoal(parts[1], "", 100,
-                    int.Parse(parts[3]), int.Parse(parts[4])));
+            {
+                ChecklistGoal g = new ChecklistGoal(
+                    parts[1],
+                    parts[2],
+                    int.Parse(parts[3]),
+                    int.Parse(parts[5]),
+                    int.Parse(parts[6])
+                );
+
+                int count = int.Parse(parts[4]);
+
+                for (int j = 0; j < count; j++)
+                {
+                    g.RecordEvent();
+                }
+
+                _goals.Add(g);
+            }
         }
     }
 }
